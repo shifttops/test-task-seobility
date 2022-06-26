@@ -1,0 +1,25 @@
+.form {
+  &__title {
+    color: #00000092;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    text-align: right;
+    width: 80%;
+    column-gap: 40px;
+    align-items: center;
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  text-align: center;
+}
