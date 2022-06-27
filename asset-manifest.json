@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/test-task-seobility/static/css/main.f977e693.css",
+    "main.js": "/test-task-seobility/static/js/main.9e77a73e.js",
+    "static/media/bg.webp": "/test-task-seobility/static/media/bg.a84d56545868e6e627fd.webp",
+    "index.html": "/test-task-seobility/index.html",
+    "main.f977e693.css.map": "/test-task-seobility/static/css/main.f977e693.css.map",
+    "main.9e77a73e.js.map": "/test-task-seobility/static/js/main.9e77a73e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f977e693.css",
+    "static/js/main.9e77a73e.js"
+  ]
+}
