@@ -1,12 +1,14 @@
 @import '~antd/dist/antd.css';
+@import "~react-toastify/dist/ReactToastify.css";
 @import "reset";
+@import "variables";
 
 body {
   background-image: url("../assets/bg.webp");
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-  color: #00000092;
+  color: $color-black;
   font-family: 'Inter', sans-serif;
 }
 

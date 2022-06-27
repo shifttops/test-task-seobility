@@ -1,6 +1,8 @@
+@import "../../styles/variables";
+
 .form {
   &__title {
-    color: #00000092;
+    color: $color-black;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -8,7 +10,8 @@
   }
 
   &__item {
-    margin: 20px auto;
+    position: relative;
+    margin: 30px auto;
     display: grid;
     grid-template-columns: 200px 1fr;
     text-align: right;
@@ -22,4 +25,12 @@
   }
 
   text-align: center;
+}
+
+.error {
+  position: absolute;
+  right: -25%;
+  color: $color-red;
+  font-size: 14px;
+  max-width: 200px;
 }

@@ -1,10 +1,9 @@
-import { FormValues } from 'models';
+import { FormValues } from 'models'
 
 export const formMapper: {
-  name: keyof FormValues;
-  type: string;
-  text: string;
-  isTextarea?: boolean;
+  name: keyof FormValues
+  type: string
+  text: string
 }[] = [
   {
     name: 'userName',
@@ -18,7 +17,7 @@ export const formMapper: {
   },
   {
     name: 'phoneNumber',
-    type: 'text',
+    type: 'tel',
     text: 'Phone number',
   },
   {
@@ -30,8 +29,7 @@ export const formMapper: {
     name: 'message',
     type: 'text',
     text: 'Message',
-    isTextarea: true,
   },
-];
+]
 
-export default formMapper;
+export default formMapper

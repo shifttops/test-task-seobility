@@ -1,70 +1,50 @@
-import React from 'react';
-import { FormikErrors, useFormik } from 'formik';
-import { Button, Input } from 'antd';
-import { formMapper } from 'mappers';
-import { FormValues } from 'models';
-import './form.scss';
+import React, { FC, useState } from 'react'
+import { useFormik } from 'formik'
+import { Button } from 'antd'
+import { formMapper } from 'mappers'
+import { FormValues } from 'models'
+import { validateForm, handleFormSubmit } from 'utils'
+import { phoneMask } from 'regulars'
+import { FormField } from './FormField'
+import './form.scss'
 
-const Form = () => {
+const Form: FC = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
   const formik = useFormik<FormValues>({
     initialValues: {
       userName: '',
-      phoneNumber: '',
+      phoneNumber: phoneMask,
       email: '',
       birthday: '',
       message: '',
     },
-    onSubmit: (values: FormValues): void | Promise<never> => {
-      return undefined;
-    },
-    validate: (values: FormValues): void | object | Promise<FormikErrors<FormValues>> => {
-      return undefined;
-    },
-  });
+    onSubmit: handleFormSubmit(setIsLoading),
+    validate: validateForm,
+  })
 
   return (
-    <div className='form' onSubmit={formik.handleSubmit}>
+    <div className='form'>
       <h2 className='form__title'>Form with user data</h2>
-      <form action=''>
-        {formMapper.map(({ name, type, text, isTextarea }) => {
-          const error = formik.errors[name];
-          const value = formik.values[name];
-
-          return (
-            <div key={name} className='form__item'>
-              <label htmlFor={name}>{text}</label>
-              {!isTextarea ? (
-                <Input
-                  name={name}
-                  id={name}
-                  type={type}
-                  onChange={formik.handleChange}
-                  value={value}
-                  placeholder={text}
-                  status={error ? 'error' : undefined}
-                  allowClear
-                />
-              ) : (
-                <Input.TextArea
-                  name={name}
-                  id={name}
-                  onChange={formik.handleChange}
-                  value={value}
-                  placeholder={text}
-                  status={error ? 'error' : undefined}
-                  autoSize={{ minRows: 5, maxRows: 10 }}
-                  allowClear
-                />
-              )}
-            </div>
-          );
-        })}
-        <Button htmlType='submit' type='primary' size='large'>
+      <form onSubmit={formik.handleSubmit}>
+        {formMapper.map(({ name, type, text }) => (
+          <FormField
+            key={name}
+            name={name}
+            value={formik.values[name]}
+            text={text}
+            setFieldValue={formik.setFieldValue}
+            handleChange={formik.handleChange}
+            error={formik.errors[name]}
+            type={type}
+          />
+        ))}
+        <Button htmlType='submit' type='primary' size='large' loading={isLoading}>
           Submit form
         </Button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form
